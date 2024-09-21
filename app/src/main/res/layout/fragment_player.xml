@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PlayerFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/phoneno_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:navigationIcon="@drawable/baseline_arrow_back_24"
+            android:background="@color/bg_color"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <TextView
+                android:id="@+id/title_create_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="21sp"
+                android:fontFamily="@font/avenirnext_cyr_bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/white"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_8sdp"
+            android:elevation="@dimen/_8sdp"
+            app:cardUseCompatPadding="true"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/grey"
+            style="@style/Widget.Material3.CardView.Elevated">
+
+            <ImageView
+                android:id="@+id/Iv_track_image"
+                android:layout_width="@dimen/_95sdp"
+                android:layout_height="@dimen/_95sdp"
+                android:src="@drawable/masala"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_trackTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fitoor"
+            android:textSize="@dimen/_18sdp"
+            android:textColor="@color/white"
+            android:maxLines="2"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_26sdp"
+            android:fontFamily="@font/avenirnext_cyr_demi"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_trackArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Artist"
+            android:layout_marginHorizontal="@dimen/_36sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="#EBE6E6E6"
+            android:fontFamily="@font/avenirnext_cyr_demi"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_175sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        app:show_buffering="when_playing"
+        app:hide_on_touch="false"
+        app:show_timeout="0"
+        app:auto_show="true"
+        app:use_controller="true"
+        android:layout_marginBottom="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

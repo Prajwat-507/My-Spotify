@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_color"
+    tools:context=".auth.SignInOptFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:elevation="@dimen/_12sdp"
+            android:scaleType="centerCrop"
+            android:layout_margin="@dimen/_12sdp"
+            android:src="@drawable/spotify_icon_blackwhite"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Millions of Songs."
+            android:textColor="@color/white"
+            android:textSize="@dimen/_26sdp"
+            android:maxLines="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/avenirnext_cyr_bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Free on Spotify."
+            android:textColor="@color/white"
+            android:textSize="@dimen/_26sdp"
+            android:maxLines="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/avenirnext_cyr_bold"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_in_free"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+            android:text="Sign up for free"
+            android:fontFamily="@font/avenirnext_cyr_bold"
+            android:textSize="@dimen/_13sdp"
+            android:textAllCaps="false"
+            android:letterSpacing="0.011"
+            android:layout_marginLeft="@dimen/_26sdp"
+            android:layout_marginRight="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_82sdp"
+
+            android:backgroundTint="@color/green" />
+
+        `<androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_in_phoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+
+            android:text="Continue with phone number"
+            android:fontFamily="@font/avenirnext_cyr_bold"
+            android:textSize="@dimen/_13sdp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:letterSpacing="0.011"
+            android:layout_marginLeft="@dimen/_26sdp"
+            android:layout_marginRight="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+
+            android:drawableStart="@drawable/phone_num"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:gravity="center"
+            android:drawableTint="@color/white"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_in_google"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+
+            android:text="Continue with Google"
+            android:textColor="@color/white"
+            android:fontFamily="@font/avenirnext_cyr_bold"
+            android:textSize="@dimen/_13sdp"
+            android:textAllCaps="false"
+            android:letterSpacing="0.011"
+            android:layout_marginLeft="@dimen/_26sdp"
+            android:layout_marginRight="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+
+
+            android:drawableStart="@drawable/google_icon"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_16sdp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_in_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+
+            android:text="Continue with Facebook"
+            android:textColor="@color/white"
+            android:fontFamily="@font/avenirnext_cyr_bold"
+            android:textSize="@dimen/_13sdp"
+            android:textAllCaps="false"
+            android:letterSpacing="0.011"
+            android:layout_marginLeft="@dimen/_26sdp"
+            android:layout_marginRight="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+
+
+            android:drawableStart="@drawable/facebook_logo"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_16sdp" />
+
+        <TextView
+            android:id="@+id/tv_logIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            android:fontFamily="@font/avenirnext_cyr_demi"
+            android:gravity="center"
+            android:padding="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_18sdp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

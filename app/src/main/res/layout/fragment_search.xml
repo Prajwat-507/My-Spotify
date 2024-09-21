@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SearchFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:background="@drawable/app_bar_custom">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/bg_color"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_collapseMode="parallax"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_collapseMode="pin"
+                >
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:background="@color/bg_color"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_gravity="start"
+                    app:layout_collapseMode="parallax"
+                    android:contentDescription="xyz" />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_48sdp"
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:backgroundTint="@color/white"
+                    app:cardUseCompatPadding="true"
+                    app:layout_collapseMode="pin"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="What do You want to Listen?"
+                        android:fontFamily="@font/avenirnext_cyr_demi"
+                        android:drawableStart="@drawable/search_icon"
+                        android:drawablePadding="@dimen/_4sdp"
+                        android:paddingStart="@dimen/_4sdp"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:background="@android:color/transparent"
+                        android:textSize="@dimen/_16sdp"
+                        android:textColorHint="@color/black"
+                        android:layout_gravity="center"
+                        />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        android:layout_marginBottom="@dimen/_115sdp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Browse all"
+                android:fontFamily="@font/avenirnext_cyr_bold"
+                android:textStyle="bold"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/_4sdp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMusicCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_4sdp"
+                app:spanCount="2"
+                android:layout_gravity="center"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <nl.joery.animatedbottombar.AnimatedBottomBar
+        android:id="@+id/bottom_bar"
+        android:background="@color/bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_44sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:abb_selectedTabType="text"
+        app:abb_indicatorAppearance="round"
+        app:abb_indicatorMargin="16dp"
+        app:abb_indicatorHeight="4dp"
+        app:abb_tabs="@menu/navigation_items"
+        app:abb_selectedIndex="0"
+        app:abb_tabColor="#B3B3B3"
+        app:abb_tabColorSelected="@color/white"
+        app:abb_tabAnimationSelected="fade"
+        app:abb_indicatorAnimation="fade"
+        app:abb_indicatorLocation="bottom"
+        app:abb_indicatorColor="@color/white"
+        android:layout_gravity="bottom"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.myspotify.auth.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_signInFragment"
+            app:destination="@id/signInOptFragment"
+            app:enterAnim="@anim/from_right"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInOptFragment"
+        android:name="com.example.myspotify.auth.SignInOptFragment"
+        android:label="fragment_sign_in_opt"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInOptFragment_to_phoneNoFragment"
+            app:destination="@id/phoneNoFragment"
+            app:enterAnim="@anim/from_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneNoFragment"
+        android:name="com.example.myspotify.auth.PhoneSignIn.PhoneNoFragment"
+        android:label="fragment_phone_no"
+        tools:layout="@layout/fragment_phone_no">
+        <action
+            android:id="@+id/action_phoneNoFragment_to_signInOptFragment"
+            app:destination="@id/signInOptFragment"
+            app:enterAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_phoneNoFragment_to_otpFragment"
+            app:destination="@id/otpFragment"
+            app:enterAnim="@anim/from_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.myspotify.auth.PhoneSignIn.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_phoneNoFragment"
+            app:destination="@id/phoneNoFragment" />
+    </fragment>
+</navigation>
