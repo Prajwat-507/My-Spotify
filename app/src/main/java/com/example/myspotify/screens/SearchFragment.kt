@@ -1,4 +1,4 @@
-package com.example.myspotify
+package com.example.myspotify.screens
 
 import android.os.Bundle
 import android.util.Log
@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.myspotify.adapter.AdapterArtist
+import com.example.myspotify.Constants
+import com.example.myspotify.R
 import com.example.myspotify.adapter.SearchAdapter
 import com.example.myspotify.databinding.FragmentSearchBinding
-import com.example.myspotify.models.ArtistCategory
 import com.example.myspotify.models.SongCategory
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
@@ -50,7 +50,7 @@ class SearchFragment : Fragment(){
                                        newIndex: Int, newTab: AnimatedBottomBar.Tab
             ) {
                 if(newTab.title.equals("home")){
-                    binding.bottomBar.selectTabAt(lastIndex, animate = true)
+
                     findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
 
                 }

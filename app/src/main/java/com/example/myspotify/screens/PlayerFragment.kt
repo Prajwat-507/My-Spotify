@@ -1,4 +1,4 @@
-package com.example.myspotify
+package com.example.myspotify.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +11,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.media3.exoplayer.ExoPlayer
+import com.example.myspotify.R
+import com.example.myspotify.Utils
 import com.example.myspotify.databinding.FragmentPlayerBinding
 import com.squareup.picasso.Picasso
 

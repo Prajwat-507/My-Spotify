@@ -28,7 +28,7 @@ import java.util.Locale
 
 class PlayListAdapter(
     val context: Context,
-    val playList: ArrayList<Data>,
+    val playList: List<Data>,
     val firebaseFirestore: FirebaseFirestore
 ):
     RecyclerView.Adapter<PlayListAdapter.PlayListViewholder>() {

@@ -15,14 +15,13 @@ import android.widget.Toast
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 
-import com.example.myspotify.Interface.ApiInterface
+import com.example.myspotify.api.ApiInterface
 import com.example.myspotify.databinding.ProgressViewBinding
 import com.github.ybq.android.spinkit.sprite.Sprite
 
 import com.github.ybq.android.spinkit.style.ThreeBounce
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 import nl.joery.animatedbottombar.AnimatedBottomBar
 import retrofit2.Retrofit

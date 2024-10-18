@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -59,21 +61,21 @@ dependencies {
 
     //Fragment navigation
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.8.2")
 
     // AndroidX lifecycle
-
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01") // what?
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
     // alternatively - just ViewModel
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
 
     //Firebase Auth
     implementation("com.google.firebase:firebase-auth:23.0.0")
 
     //Edge to Edge
-    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.activity:activity-ktx:1.9.2")
 
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:(2.11.0)")
@@ -97,4 +99,13 @@ dependencies {
 
     // FirebaseUI for Cloud Firestore
     implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
+
+    // Dependency Injection
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

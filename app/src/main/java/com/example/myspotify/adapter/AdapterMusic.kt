@@ -11,7 +11,7 @@ import com.example.myspotify.databinding.MusicItemViewBinding
 import com.example.myspotify.models.Data
 import com.squareup.picasso.Picasso
 
-class AdapterMusic(val musicList: ArrayList<List<Data>>):
+class AdapterMusic(val musicList: List<Data>):
     RecyclerView.Adapter<AdapterMusic.MusicCategoryViewHolder>() {
 
     class MusicCategoryViewHolder(val binding: MusicItemViewBinding): ViewHolder(binding.root) {}
@@ -29,12 +29,12 @@ class AdapterMusic(val musicList: ArrayList<List<Data>>):
         val currentItem = musicList[position]
 
         holder.binding.apply {
-            Picasso.get().load(currentItem[0].album.cover_medium).into(IvMusicImage)
-            tvMusicTitle.text = currentItem[0].album.title
+            Picasso.get().load(currentItem.album.cover_medium).into(IvMusicImage)
+            tvMusicTitle.text = currentItem.album.title
 
             IvMusicImage.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putString("arg", currentItem[0].artist.name)
+                bundle.putString("arg", currentItem.artist.name)
 
                 holder.itemView.findNavController().navigate(R.id.action_homeFragment_to_playListFragment, bundle)
 

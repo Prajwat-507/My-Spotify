@@ -56,14 +56,14 @@ class SelectPodcastFragment : Fragment() {
 
     private fun onNextBtnClicked() {
         binding.btnCnfPod.setOnClickListener {
-            findNavController().navigate(R.id.action_selectPodcastFragment_to_homeFragment)
+//            findNavController().navigate(R.id.action_selectPodcastFragment_to_homeFragment)
         }
     }
 
 
     private fun onNavigationBtnClicked(){
         binding.pdToolbar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_selectPodcastFragment_to_selectArtistFragment)
+//            findNavController().navigate(R.id.action_selectPodcastFragment_to_selectArtistFragment)
         }
     }
 

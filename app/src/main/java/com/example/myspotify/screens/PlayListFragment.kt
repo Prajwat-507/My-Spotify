@@ -1,4 +1,4 @@
-package com.example.myspotify
+package com.example.myspotify.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,22 +12,26 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.myspotify.R
+import com.example.myspotify.Utils
+import com.example.myspotify.adapter.AdapterMusic
 import com.example.myspotify.adapter.PlayListAdapter
 import com.example.myspotify.databinding.FragmentPlayListBinding
 import com.example.myspotify.models.Data
-import com.example.myspotify.viewModel.ApiDataViewModel
+import com.example.myspotify.viewModel.CategoryViewModel
+import com.example.myspotify.viewModel.ListViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class PlayListFragment : Fragment() {
     private lateinit var binding: FragmentPlayListBinding
-    private var playListData = ArrayList<List<Data>>()
+
+    val musicListViewModel: ListViewModel by viewModels()
 
     val firebaseFirestore = Firebase.firestore
-
-    private val viewModel: ApiDataViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,26 +47,24 @@ class PlayListFragment : Fragment() {
         val searchArgument = arguments?.getString("arg")
 
 
-        getTrack(searchArgument!!)
+        getTrack()
 
 
         return binding.root
     }
 
-    private fun getTrack(search_argument: String) {
+    private fun getTrack() {
 
         Utils.showDialog(requireContext())
 
-        viewModel.apply {
+        viewLifecycleOwner.lifecycleScope.launch {
+            musicListViewModel.musicList.collect { list ->
 
-            playListData = viewModel.getMusicApiData(search_argument)
-
-            lifecycleScope.launch {
-                successCallMusic.collect{
-                    if(it) {
-                        Utils.hideDialog()
-                        binding.rvPl.adapter = PlayListAdapter(requireContext(), ArrayList(playListData[0]), firebaseFirestore)
-                    }
+                // Update your UI with the categories list
+                if (list.size>6) {
+                    Utils.hideDialog()
+                    val adapter = PlayListAdapter(requireContext(), list, firebaseFirestore)
+                    binding.rvPl.adapter = adapter
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.example.myspotify
+package com.example.myspotify.screens
 
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.myspotify.R
+import com.example.myspotify.Utils
 import com.example.myspotify.adapter.LibraryAdapter
 import com.example.myspotify.databinding.FragmentLibraryBinding
 import com.example.myspotify.models.UserData

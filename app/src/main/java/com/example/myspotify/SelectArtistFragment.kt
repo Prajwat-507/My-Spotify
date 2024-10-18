@@ -67,7 +67,7 @@ class SelectArtistFragment : Fragment() {
 
     private fun onNextBtnClicked() {
         binding.btnCnfAt.setOnClickListener {
-            findNavController().navigate(R.id.action_selectArtistFragment_to_selectPodcastFragment)
+//            findNavController().navigate(R.id.action_selectArtistFragment_to_selectPodcastFragment)
         }
     }
 
