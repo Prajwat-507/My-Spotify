@@ -83,8 +83,10 @@ class HomeFragment : Fragment() {
                     findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
                 }
                 if(newTab.title.equals("library")){
-                    binding.bottomBar.selectTabAt(newIndex,true)
                     findNavController().navigate(R.id.action_homeFragment_to_libraryFragment)
+                }
+                if(newTab.title.equals("profile")){
+                    findNavController().navigate(R.id.action_homeFragment_to_userFragment)
                 }
             }
 
@@ -104,7 +106,6 @@ class HomeFragment : Fragment() {
             // if that's more appropriate.
             v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 leftMargin = insets.left
-                bottomMargin = insets.bottom
                 rightMargin = insets.right
                 topMargin = insets.top
             }

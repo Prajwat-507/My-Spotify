@@ -5,45 +5,51 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_color"
-    tools:context=".screens.HomeFragment">
+    tools:context=".screens.UserFragment">
 
     <LinearLayout
-        android:id="@+id/ll_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:layout_marginEnd="@dimen/_4sdp"
-        android:layout_marginBottom="@dimen/_4sdp"
-        android:gravity="top"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_bar">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        android:orientation="vertical">
 
-    <!-- Recently Played Section -->
-    <TextView
-        android:id="@+id/tv_music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Music for you"
-        android:layout_marginTop="@dimen/_23sdp"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:fontFamily="@font/avenirnext_cyr_bold"
-        android:layout_marginBottom="@dimen/_4sdp"/>
+        <ImageView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:src="@drawable/baseline_perm_identity_24"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_50sdp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerMusic"
+        <TextView
+            android:id="@+id/tv_userPhNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:spanCount="2"
+            android:text=" "
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/avenirnext_cyr_demi"
+            android:layout_marginTop="@dimen/_8sdp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signOut"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+            android:text="SignOut"
+            android:fontFamily="@font/avenirnext_cyr_bold"
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:letterSpacing="0.011"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:padding="@dimen/_4sdp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+            android:layout_marginTop="@dimen/_62sdp"
+            android:backgroundTint="@color/green"/>
+
     </LinearLayout>
 
     <nl.joery.animatedbottombar.AnimatedBottomBar
@@ -67,4 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.myspotify.screens
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.myspotify.R
 import com.example.myspotify.Utils
 import com.example.myspotify.adapter.AdapterMusic
@@ -24,6 +26,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import nl.joery.animatedbottombar.AnimatedBottomBar
 
 @AndroidEntryPoint
 class PlayListFragment : Fragment() {
@@ -42,6 +45,7 @@ class PlayListFragment : Fragment() {
 
         setStatusNavBar()
         handleSystemBar()
+        handleBottomBar()
 
         // Access arguments (data passed from the adapter)
         val searchArgument = arguments?.getString("arg")
@@ -91,6 +95,7 @@ class PlayListFragment : Fragment() {
         }
     }
 
+
     private fun setStatusNavBar(){
         // Change the status bar color
         val window = requireActivity().window
@@ -99,5 +104,33 @@ class PlayListFragment : Fragment() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.bg_color)
         window.navigationBarColor = ContextCompat.getColor(requireActivity(), R.color.black)
+    }
+
+    private fun handleBottomBar() {
+        binding.bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener{
+
+            override fun onTabSelected(lastIndex: Int, lastTab: AnimatedBottomBar.Tab?,
+                                       newIndex: Int, newTab: AnimatedBottomBar.Tab
+            ) {
+                if(newTab.title.equals("home")){
+
+                    findNavController().navigate(R.id.action_playListFragment_to_homeFragment)
+
+                }
+                if(newTab.title.equals("search")){
+
+                    binding.bottomBar.selectTabAt(newIndex, animate = true)
+                    findNavController().navigate(R.id.action_playListFragment_to_searchFragment)
+                }
+                if(newTab.title.equals("profile")){
+                    findNavController().navigate(R.id.action_playListFragment_to_userFragment)
+                }
+
+            }
+
+            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
+                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
+            }
+        })
     }
 }

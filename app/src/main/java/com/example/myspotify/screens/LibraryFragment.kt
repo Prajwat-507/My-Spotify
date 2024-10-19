@@ -70,9 +70,11 @@ class LibraryFragment : Fragment() {
                     findNavController().navigate(R.id.action_libraryFragment_to_homeFragment)
                 }
                 if(newTab.title.equals("search")){
-                    binding.bottomBar.selectTabAt(newIndex, animate = true)
                     findNavController().navigate(R.id.action_libraryFragment_to_searchFragment)
 
+                }
+                if(newTab.title.equals("profile")){
+                    findNavController().navigate(R.id.action_libraryFragment_to_userFragment)
                 }
 
             }
