@@ -59,6 +59,9 @@ class SearchFragment : Fragment(){
                     binding.bottomBar.selectTabAt(newIndex, animate = true)
                     findNavController().navigate(R.id.action_searchFragment_to_libraryFragment)
                 }
+                if(newTab.title.equals("profile")){
+                    findNavController().navigate(R.id.action_searchFragment_to_userFragment)
+                }
 
             }
 

@@ -130,18 +130,4 @@ object Utils {
     fun getCurrentTrack(): String? {
         return currentTrack
     }
-
-
-    fun makeApiCall(BASE_URL: String): ApiInterface {
-        // Step 1: Create Retrofit instance
-        if (retroFit == null) {
-            retroFit = Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()) // JSON converter
-                .build()
-        }
-
-        // Step 2: Return ApiInterface created from Retrofit
-        return retroFit!!.create(ApiInterface::class.java)
-    }
 }

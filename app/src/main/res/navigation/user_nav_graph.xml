@@ -16,10 +16,16 @@
             app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_libraryFragment"
-            app:destination="@id/libraryFragment" />
+            app:destination="@id/libraryFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/from_right" />
     </fragment>
     <fragment
         android:id="@+id/playListFragment"
@@ -28,7 +34,19 @@
         tools:layout="@layout/fragment_play_list" >
         <action
             android:id="@+id/action_playListFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
+            app:destination="@id/playerFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_playListFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_playListFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_playListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/playerFragment"
@@ -50,7 +68,11 @@
             app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_searchFragment_to_libraryFragment"
-            app:destination="@id/libraryFragment" />
+            app:destination="@id/libraryFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_searchFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/libraryFragment"
@@ -59,12 +81,37 @@
         tools:layout="@layout/fragment_library" >
         <action
             android:id="@+id/action_libraryFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_libraryFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_libraryFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
+            app:destination="@id/playerFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_libraryFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/from_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.myspotify.screens.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_userFragment_to_playListFragment"
+            app:destination="@id/playListFragment"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_userFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_right" />
     </fragment>
 </navigation>
