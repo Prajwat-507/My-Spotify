@@ -1,7 +1,6 @@
 package com.example.myspotify.screens
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,20 +12,16 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.myspotify.R
 import com.example.myspotify.Utils
-import com.example.myspotify.adapter.AdapterMusic
 import com.example.myspotify.adapter.PlayListAdapter
 import com.example.myspotify.databinding.FragmentPlayListBinding
-import com.example.myspotify.models.Data
-import com.example.myspotify.viewModel.CategoryViewModel
 import com.example.myspotify.viewModel.ListViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import nl.joery.animatedbottombar.AnimatedBottomBar
+import okhttp3.internal.Util
 
 @AndroidEntryPoint
 class PlayListFragment : Fragment() {
@@ -48,6 +43,7 @@ class PlayListFragment : Fragment() {
         handleBottomBar()
 
         // Access arguments (data passed from the adapter)
+        // Argument passed through bundle is not accessed here, but through SavedStateHandle.
         val searchArgument = arguments?.getString("arg")
 
 
@@ -67,7 +63,7 @@ class PlayListFragment : Fragment() {
                 // Update your UI with the categories list
                 if (list.size>6) {
                     Utils.hideDialog()
-                    val adapter = PlayListAdapter(requireContext(), list, firebaseFirestore)
+                    val adapter = PlayListAdapter(requireActivity().supportFragmentManager , list, firebaseFirestore)
                     binding.rvPl.adapter = adapter
                 }
             }
@@ -107,30 +103,30 @@ class PlayListFragment : Fragment() {
     }
 
     private fun handleBottomBar() {
-        binding.bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener{
-
-            override fun onTabSelected(lastIndex: Int, lastTab: AnimatedBottomBar.Tab?,
-                                       newIndex: Int, newTab: AnimatedBottomBar.Tab
-            ) {
-                if(newTab.title.equals("home")){
-
-                    findNavController().navigate(R.id.action_playListFragment_to_homeFragment)
-
+        binding.bottomBar.setOnItemSelectedListener { item->
+            when (item.itemId) {
+                R.id.action_search -> {
+//                    findNavController().navigate(R.id.action_searchFragment_to_playListFragment)
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,SearchFragment())
+                    true
                 }
-                if(newTab.title.equals("search")){
-
-                    binding.bottomBar.selectTabAt(newIndex, animate = true)
-                    findNavController().navigate(R.id.action_playListFragment_to_searchFragment)
+                R.id.action_home -> {
+//                    findNavController().navigate(R.id.action_playListFragment_to_homeFragment)
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,HomeFragment())
+                    true
                 }
-                if(newTab.title.equals("profile")){
-                    findNavController().navigate(R.id.action_playListFragment_to_userFragment)
+                R.id.action_user -> {
+//                    findNavController().navigate(R.id.action_playListFragment_to_userFragment)
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,UserFragment())
+                    true
                 }
-
+                R.id.action_playlist -> {
+//                    findNavController().navigate(R.id.action_playListFragment_to_userFragment)
+                    Utils.replaceFragment(requireActivity().supportFragmentManager, LibraryFragment())
+                    true
+                }
+                else -> false
             }
-
-            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
-            }
-        })
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.example.myspotify
 import android.R
 import android.app.Dialog
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 
@@ -11,6 +12,8 @@ import android.view.Window
 
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
@@ -31,10 +34,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Utils {
     private var FirebaseAuthInstance: FirebaseAuth?=null
 
-
-
-
-
     private var retroFit: Retrofit?=null
 
     private var exoPlayer: ExoPlayer?=null
@@ -42,10 +41,8 @@ object Utils {
 
     private lateinit var bottomBar :AnimatedBottomBar
 
-
     // Create a Dialog
     private var dialog: Dialog?=null
-
 
 
     fun showDialog(context: Context) {
@@ -129,5 +126,15 @@ object Utils {
 
     fun getCurrentTrack(): String? {
         return currentTrack
+    }
+
+
+    fun replaceFragment(fragmentManager: FragmentManager, fragment: Fragment, bundle: Bundle? = null) {
+        fragment.arguments = bundle // Attach the bundle to the fragment
+
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(com.example.myspotify.R.id.fragmentContainerView2, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }

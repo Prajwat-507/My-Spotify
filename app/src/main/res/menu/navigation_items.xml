@@ -4,17 +4,17 @@
         android:id="@+id/action_home"
         android:icon="@drawable/home_24"
         android:checked="true"
-        android:title="home" />
+        android:title="" />
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/search_icon"
-        android:title="search" />
+        android:title="" />
     <item
         android:id="@+id/action_playlist"
         android:icon="@drawable/playlist_24"
-        android:title="library" />
+        android:title="" />
     <item
         android:id="@+id/action_user"
         android:icon="@drawable/user_icon"
-        android:title="profile" />
+        android:title="" />
 </menu>

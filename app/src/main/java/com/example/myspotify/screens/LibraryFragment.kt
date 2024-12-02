@@ -16,6 +16,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import nl.joery.animatedbottombar.AnimatedBottomBar
+import okhttp3.internal.Util
 
 
 class LibraryFragment : Fragment() {
@@ -60,28 +61,22 @@ class LibraryFragment : Fragment() {
     }
 
     private fun handleBottomBar() {
-        binding.bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener{
-
-            override fun onTabSelected(lastIndex: Int, lastTab: AnimatedBottomBar.Tab?,
-                                       newIndex: Int, newTab: AnimatedBottomBar.Tab
-            ) {
-                if(newTab.title.equals("home")){
-                    binding.bottomBar.selectTabAt(newIndex, animate = true)
-                    findNavController().navigate(R.id.action_libraryFragment_to_homeFragment)
+        binding.bottomBar.setOnItemSelectedListener { item->
+            when (item.itemId) {
+                R.id.action_search -> {
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,SearchFragment())
+                    true
                 }
-                if(newTab.title.equals("search")){
-                    findNavController().navigate(R.id.action_libraryFragment_to_searchFragment)
-
+                R.id.action_home -> {
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,HomeFragment())
+                    true
                 }
-                if(newTab.title.equals("profile")){
-                    findNavController().navigate(R.id.action_libraryFragment_to_userFragment)
+                R.id.action_user -> {
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,UserFragment())
+                    true
                 }
-
+                else -> false
             }
-
-            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
-            }
-        })
+        }
     }
 }

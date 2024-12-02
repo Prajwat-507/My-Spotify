@@ -46,24 +46,13 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
     </LinearLayout>
 
-    <nl.joery.animatedbottombar.AnimatedBottomBar
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_bar"
         android:background="@color/bg_color"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="@dimen/_42sdp"
         android:layout_marginTop="@dimen/_8sdp"
-        app:abb_selectedTabType="text"
-        app:abb_indicatorAppearance="round"
-        app:abb_indicatorMargin="16dp"
-        app:abb_indicatorHeight="4dp"
-        app:abb_tabs="@menu/navigation_items"
-        app:abb_tabColor="#B3B3B3"
-        app:abb_tabColorSelected="@color/white"
-        app:abb_tabAnimationSelected="fade"
-        app:abb_indicatorAnimation="fade"
-        app:abb_indicatorLocation="bottom"
-        app:abb_indicatorColor="@color/white"
-
+        app:menu="@menu/navigation_items"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

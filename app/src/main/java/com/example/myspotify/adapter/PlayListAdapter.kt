@@ -1,11 +1,12 @@
 package com.example.myspotify.adapter
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -14,20 +15,16 @@ import com.example.myspotify.R
 import com.example.myspotify.Utils
 import com.example.myspotify.databinding.TrackItemViewBinding
 import com.example.myspotify.models.Data
-import com.example.myspotify.models.SongCategory
 import com.example.myspotify.models.UserData
-import com.google.firebase.Firebase
+import com.example.myspotify.screens.PlayListFragment
+import com.example.myspotify.screens.PlayerFragment
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
 import com.squareup.picasso.Picasso
-import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 class PlayListAdapter(
-    val context: Context,
+    val fragmentManager: FragmentManager,
     val playList: List<Data>,
     val firebaseFirestore: FirebaseFirestore
 ):
@@ -70,7 +67,9 @@ class PlayListAdapter(
                 bundle.putString("track_Image", currentTrack.album.cover_medium)
                 bundle.putString("preview", currentTrack.preview)
 
-                holder.itemView.findNavController().navigate(R.id.action_playListFragment_to_playerFragment, bundle)
+                Utils.replaceFragment(fragmentManager, PlayerFragment(), bundle)
+
+//                holder.itemView.findNavController().navigate(R.id.action_playListFragment_to_playerFragment, bundle)
             }
 
             favBtn.setOnClickListener {
@@ -80,7 +79,7 @@ class PlayListAdapter(
                     Utils.getUserID(), Timestamp(Date()), currentTrack.preview)
                 firebaseFirestore.collection("users").document().set(user)
                     .addOnSuccessListener {
-                    Utils.showToast(context, "Data added Successfully")
+
                     }
                     .addOnFailureListener {
                         Log.w(TAG, "Error adding document", it)
@@ -88,4 +87,6 @@ class PlayListAdapter(
             }
         }
     }
+
+
 }

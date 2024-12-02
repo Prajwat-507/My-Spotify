@@ -54,18 +54,16 @@ class HomeFragment : Fragment() {
     }
 
 
-
     private fun getMusicData() {
-        Utils.showDialog(requireActivity())
-
         viewLifecycleOwner.lifecycleScope.launch {
                 categoryViewModel.musicCategory.collect { categories ->
-
                     // Update your UI with the categories list
                     if (categories.size>5) {
                         Utils.hideDialog()
                         val adapter = AdapterMusic(categories)
                         binding.recyclerMusic.adapter = adapter
+                    }else{
+                        Utils.showDialog(requireActivity())
                     }
                 }
         }
@@ -74,26 +72,26 @@ class HomeFragment : Fragment() {
 
 
     private fun handleBottomBar() {
-        binding.bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener{
+        binding.bottomBar.setOnItemSelectedListener { item->
+            when (item.itemId) {
+                R.id.action_search -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+                    Utils.replaceFragment(requireActivity().supportFragmentManager, SearchFragment())
+                    true
+                }
+                R.id.action_playlist -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_playListFragment)
+                    Utils.replaceFragment(requireActivity().supportFragmentManager, LibraryFragment())
+                    true
+                }
+                R.id.action_user -> {
+                    Utils.replaceFragment(requireActivity().supportFragmentManager, UserFragment())
+                    true
 
-            override fun onTabSelected(lastIndex: Int, lastTab: AnimatedBottomBar.Tab?,
-                                       newIndex: Int, newTab: AnimatedBottomBar.Tab
-            ) {
-                if(newTab.title.equals("search")) {
-                    findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
                 }
-                if(newTab.title.equals("library")){
-                    findNavController().navigate(R.id.action_homeFragment_to_libraryFragment)
-                }
-                if(newTab.title.equals("profile")){
-                    findNavController().navigate(R.id.action_homeFragment_to_userFragment)
-                }
+                else -> false
             }
-
-            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
-            }
-        })
+        }
     }
 
 
@@ -108,9 +106,8 @@ class HomeFragment : Fragment() {
                 leftMargin = insets.left
                 rightMargin = insets.right
                 topMargin = insets.top
+                bottomMargin = insets.bottom
             }
-
-
             // Return CONSUMED if you don't want want the window insets to keep passing
             // down to descendant views.
             WindowInsetsCompat.CONSUMED
@@ -126,4 +123,6 @@ class HomeFragment : Fragment() {
         window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.bg_color)
         window.navigationBarColor = ContextCompat.getColor(requireActivity(), R.color.black)
     }
+
+
 }

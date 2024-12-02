@@ -64,27 +64,25 @@ class UserFragment : Fragment() {
     }
 
     private fun handleBottomBar() {
-        binding.bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener{
+        binding.bottomBar.setOnItemSelectedListener { item->
+            when (item.itemId) {
+                R.id.action_search -> {
 
-            override fun onTabSelected(lastIndex: Int, lastTab: AnimatedBottomBar.Tab?,
-                                       newIndex: Int, newTab: AnimatedBottomBar.Tab
-            ) {
-                if(newTab.title.equals("home")){
-                    findNavController().navigate(R.id.action_userFragment_to_homeFragment)
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,SearchFragment())
+                    true
+                }
+                R.id.action_home -> {
 
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,HomeFragment())
+                    true
                 }
-                if(newTab.title.equals("library")){
-                    findNavController().navigate(R.id.action_userFragment_to_playListFragment)
-                }
-                if(newTab.title.equals("search")){
-                    findNavController().navigate(R.id.action_userFragment_to_searchFragment)
-                }
+                R.id.action_playlist -> {
 
+                    Utils.replaceFragment(requireActivity().supportFragmentManager,LibraryFragment())
+                    true
+                }
+                else -> false
             }
-
-            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
-            }
-        })
+        }
     }
 }
