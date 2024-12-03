@@ -36,7 +36,7 @@ Takes two numbers and returns the sum.
 
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1Mw-udW3tszNh7bCi4_24rKbGJwyZE2U4/view?usp=sharing)
+![App Screenshot](https://drive.google.com/uc?export=view&id=1Mw-udW3tszNh7bCi4_24pKbGJwyZE2U4)
 
 
 ## Tech Stack
