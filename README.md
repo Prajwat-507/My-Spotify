@@ -35,8 +35,8 @@ Takes two numbers and returns the sum.
 
 
 ## Screenshots
+![MySpotify_Screens](https://github.com/user-attachments/assets/999c600f-a44d-4ffa-ae2a-ccce99b92375)
 
-![App Screenshot](https://drive.google.com/file/d/uc?export=view&id=1Mw-udW3tszNh7bCi4_24pKbGJwyZE2U4)
 
 ## Tech Stack
 
