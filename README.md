@@ -38,7 +38,6 @@ Takes two numbers and returns the sum.
 
 ![App Screenshot](https://drive.google.com/uc?export=view&id=1Mw-udW3tszNh7bCi4_24pKbGJwyZE2U4)
 
-
 ## Tech Stack
 
 **Client:** XML, Kotlin, Material Design 3
